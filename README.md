@@ -11,15 +11,15 @@ Cluster extent thresholding is one of the most popular approaches for activation
 ### Prerequisites
 
 * Please download and install Matlab first. For macOS users, you could edit your ```.bash_profile``` file by adding the following line
-``` r
-export PATH=/Applications/MATLAB_***.app/bin:$PATH
-```
-where the Matlab version can be found by running ```matlabroot``` in Matlab.
+  ``` r
+  export PATH=/Applications/MATLAB_***.app/bin:$PATH
+  ```
+  where the Matlab version can be found by running ```matlabroot``` in Matlab.
 
 * Please download SPM12 and add it to the Matlab search path. You could either follow **HOME -> Set Path -> Add with Subfolders**, or simply run the following line
-``` r
-addpath(genpath('.../spm12'));
-```
+  ``` r
+  addpath(genpath('.../spm12'));
+  ```
 
 ### Installing clusterTDP-SPM
 
@@ -31,11 +31,11 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
 ## Implementation
 
 * Launch Matlab.
-* Navigate to the folder containing the clusterTDP-SPM toolbox.
+* Navigate to the folder for the clusterTDP-SPM toolbox.
 * Run the below script in the console, and select the desired cluster inference options to derive the result table:
-``` r
-spm_clusterTDP_run
-```
+  ``` r
+  spm_clusterTDP_run
+  ```
 
 ## References
 
