@@ -14,7 +14,7 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
   ``` r
   export PATH=/Applications/MATLAB_***.app/bin:$PATH
   ```
-  where the installed Matlab version can be found by running ```matlabroot``` in Matlab.
+  where the installed Matlab version ```MATLAB_***``` can be found by running ```matlabroot``` in Matlab.
 
 * Please download SPM12 and add it to the Matlab search path. You could either follow **HOME -> Set Path -> Add with Subfolders**, or simply run the following line
   ``` r
@@ -30,7 +30,7 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
 
 ## Implementation
 
-* Launch Matlab, or execuate Matlab from the Terminal (command prompt) without the full desktop GUI while still allowing to display graphs with the command
+* Launch Matlab, or execute Matlab from the Terminal (command prompt) without the full desktop GUI while still allowing to display graphs with the command
   ```r
   matlab -nodesktop -nosplash
   ```
@@ -42,10 +42,24 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
   ``` r
   spm_clusterTDP_run
   ```
-* Alternatively, you could execuate the script with
+* Alternatively, you could execute the script ```spm_clusterTDP_run.m``` with
   ```r
   matlab -nodesktop -nosplash -r "spm_clusterTDP_run"
   ```
+
+## Result Display
+
+The results derived using **clusterTDP-SPM** are summarised and outputted as a result summary table:
+```r
+
+```
+
+where a full list of summary variables is described below.
+* Index of significant clusters using RFT-based cluster extent inference
+* Cluster size for each significant cluster
+* Lower bound of TDP bound for each cluster
+* Lower bound of TDN (number of true discoveries) bound for each cluster
+* [X,Y,Z] location of voxels {mm}
 
 ## References
 
