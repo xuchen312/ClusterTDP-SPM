@@ -30,7 +30,7 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
 
 ## Implementation
 
-* Launch Matlab, or execuate Matlab from the Terminal (command prompt) without the full desktop GUI while still allowing to disply graphs with the command
+* Launch Matlab, or execuate Matlab from the Terminal (command prompt) without the full desktop GUI while still allowing to display graphs with the command
   ```r
   matlab -nodesktop -nosplash
   ```
