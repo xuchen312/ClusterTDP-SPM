@@ -10,7 +10,7 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
 
 ### Prerequisites
 
-* Please first download and install Matlab. For macOS users, you could edit your ```.bash_profile``` file and simply add Matlab to the ```PATH``` by appending
+* Please first download and install Matlab. For macOS users, you could edit the ```.bash_profile``` file and add Matlab to the ```PATH``` by appending
   ``` r
   export PATH=/Applications/MATLAB_***.app/bin:$PATH
   ```
