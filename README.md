@@ -42,7 +42,7 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
   ```r
   spm_clusterTDP_run
   ```
-* Alternatively, you could execute the script ```spm_clusterTDP_run.m``` with
+* Alternatively, you could execute the script ```spm_clusterTDP_run.m``` from the Terminal (command prompt) with
   ```r
   matlab -nodesktop -nosplash -r "spm_clusterTDP_run"
   ```
