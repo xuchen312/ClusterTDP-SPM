@@ -30,15 +30,15 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
 
 ## Implementation
 
-* Launch Matlab, or execute Matlab from the Terminal (command prompt) without the full desktop GUI while still allowing to display graphs with the command
-  ```r
-  matlab -nodesktop -nosplash
-  ```
 * Navigate to the folder for the clusterTDP-SPM toolbox with
   ```r
   cd .../clusterTDP-SPM
   ```
-* Run the below script in the console, and select the desired cluster inference options on the pop-up GUI interface to derive the result table.
+* Launch Matlab, or execute Matlab from the Terminal (command prompt) without the full desktop GUI while still allowing to display graphs with the command
+  ```r
+  matlab -nodesktop -nosplash
+  ```
+* Run the script ```spm_clusterTDP_run.m``` in the console, and select the desired cluster inference options on the pop-up GUI interface to derive the result table.
   ```r
   spm_clusterTDP_run
   ```
