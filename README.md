@@ -39,7 +39,7 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
   cd .../clusterTDP-SPM
   ```
 * Run the below script in the console, and select the desired cluster inference options on the pop-up GUI interface to derive the result table.
-  ``` r
+  ```r
   spm_clusterTDP_run
   ```
 * Alternatively, you could execute the script ```spm_clusterTDP_run.m``` with
@@ -50,16 +50,38 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
 ## Result Display
 
 The results derived using **clusterTDP-SPM** are summarised and outputted as a result summary table:
-```r
+```
+Statistics: cluster-level summary for search volume
+          Cluster size    TDN      TDP     max(T)         [X,Y,Z]     
+          ____________    ____    _____    ______    _________________
 
+    1         5894        1083    0.184    11.899     58    -14      4
+    2         4039         795    0.197     9.983    -58    -14      0
+    3          276           1    0.004      7.25     52      2     52
+    4          125           0        0     6.596     18     -4    -14
+    5           27           0        0     5.645     10     -2     -2
+    6           36           0        0     5.511    -34     12    -24
+    7           72           0        0     4.989    -42     28     -2
+    8          131           1    0.008     4.509    -60     16     32
+    9           17           0        0     4.356     40      4    -44
+    10          17           0        0     4.301     -8     -8    -12
+    11          16           0        0      4.16    -48     -8     46
+    12          10           0        0     4.116     28    -20     -6
+    13          21           0        0     4.107      8     48     36
+    14          29           0        0     4.032      8     12     60
+    15          10           0        0     3.993    -36     12    -40
+    16          11           0        0     3.939     10     20     58
+    17          11           0        0     3.928      6    -32      0
+    18          19           0        0       3.8     10    -12      8
 ```
 
 where a full list of summary variables is described below.
 * Index of significant clusters using RFT-based cluster extent inference
 * Cluster size for each significant cluster
-* Lower bound of TDP bound for each cluster
 * Lower bound of TDN (number of true discoveries) bound for each cluster
-* [X,Y,Z] location of voxels {mm}
+* Lower bound of TDP bound for each cluster
+* maximum statistic of peak voxel within each cluster
+* [X,Y,Z] location of peak voxel within each cluster {mm}
 
 ## References
 
