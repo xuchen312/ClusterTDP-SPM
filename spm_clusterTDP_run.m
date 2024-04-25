@@ -57,34 +57,18 @@ maxXYZmm = mat(1:3,:)*[maxXYZ; ones(1,size(maxXYZ,2))];
 
 fprintf('\n');
 
-% convert numbers to strings
-tdp_str = string(tdp);
-for i=1:numel(tdp_str)
-    tdp_str(i) = sprintf('%.3f',tdp_str(i));
-end
-mz_str  = string(mz); 
-for i=1:numel(mz_str)
-    mz_str(i) = sprintf('%.3f',mz_str(i));
-end
-% create result table 1
-tbl1 = array2table([sz,lb,tdp_str,mz_str,maxXYZmm'], ...
-    'VariableNames', {'Cluster size','TDN','TDP','max(T)','X','Y','Z'}, ...
-    'RowNames',string(1:numel(sz)));
+% create result table
+tbl = table(sz,lb,tdp,mz,maxXYZmm');
+tbl.Properties.Description   = 'Statistics: cluster-level summary for search volume';
+tbl.Properties.RowNames      = string(1:length(sz));
+tbl.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','[X,Y,Z]'};
+tbl.('TDP')    = round(tbl.('TDP'),3);
+tbl.('max(T)') = round(tbl.('max(T)'),3);
 fprintf('Statistics: cluster-level summary for search volume\n')
-disp(tbl1);
+disp(tbl);
 
-% create result table 2
-tbl2 = table(sz,lb,tdp,mz,maxXYZmm');
-tbl2.Properties.Description   = 'Statistics: cluster-level summary for search volume';
-tbl2.Properties.RowNames      = string(1:length(sz));
-tbl2.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','[X,Y,Z]'};
-tbl2.('TDP')    = round(tbl2.('TDP'),3);
-tbl2.('max(T)') = round(tbl2.('max(T)'),3);
-fprintf('Statistics: cluster-level summary for search volume\n')
-disp(tbl2);
-
-
-%[hReg,xSPM,SPM] = spm_clusterTDP_ui('Setup',xSPM);
+% write result table to a text file
+writetable(tbl,'clusTbl.txt','Delimiter',' ','WriteRowNames',true); 
 
 
 
