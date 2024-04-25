@@ -49,7 +49,7 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
 
 ## Result Display
 
-The results derived using **clusterTDP-SPM** are summarised and outputted as a result summary table:
+The results derived using **clusterTDP-SPM** are summarised with a result summary table that is written to a text file ```clusTbl.txt``` and printed on the console, e.g.,
 ```
 Statistics: cluster-level summary for search volume
           Cluster size    TDN      TDP     max(T)         [X,Y,Z]     
