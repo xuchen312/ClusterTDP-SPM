@@ -38,18 +38,23 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
   ```r
   matlab -nodesktop -nosplash
   ```
-* Run the script ```spm_clusterTDP_run.m``` in the console, and select the desired cluster inference options on the pop-up GUI interface to derive the result table.
+* Run the function ```spm_clusterTDP_run``` with at most two input arguments in the console, using either
+  + ```spm_clusterTDP_run``` to select the desired cluster inference options on the pop-up GUI interface to derive the result table
+  
+  + ```spm_clusterTDP_run(xSPM)``` if ```xSPM``` is already loaded into the workspace or could be loaded using ```load()``` function
+  
+  + ```spm_clusterTDP_run('***.txt')``` if you would like to write the result summary table to a text file named ```***.txt```
+  
+  + ```spm_clusterTDP_run(xSPM, '***.txt')``` if ```xSPM``` is available and the output text file name is specified as ```***.txt```
+
+* Alternatively, the above steps could be executed from the Terminal (command prompt) with
   ```r
-  spm_clusterTDP_run
-  ```
-* Alternatively, you could execute the script ```spm_clusterTDP_run.m``` from the Terminal (command prompt) with
-  ```r
-  matlab -nodesktop -nosplash -r "spm_clusterTDP_run"
+  matlab -nodesktop -nosplash -r "cd('.../clusterTDP-SPM'); spm_clusterTDP_run; exit"
   ```
 
 ## Result Display
 
-The results derived using **clusterTDP-SPM** are summarised with a result summary table that is written to a text file ```clusTbl.txt``` and printed on the console, e.g.,
+The results derived using **clusterTDP-SPM** are summarised with a result summary table and printed on the console, e.g.,
 ```
 Statistics: cluster-level summary for search volume
           Cluster size    TDN      TDP     max(T)         [X,Y,Z]     
