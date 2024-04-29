@@ -39,7 +39,7 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
   matlab -nodesktop -nosplash
   ```
 * Run the function ```spm_clusterTDP_run``` with at most two input arguments in the console, using either
-  + ```spm_clusterTDP_run``` to select the desired cluster inference options on the pop-up GUI interface to derive the result table
+  + ```spm_clusterTDP_run``` to interactively select the desired cluster inference options on the pop-up GUI interface and run the clusterTDP inference subsequently
   
   + ```spm_clusterTDP_run(xSPM)``` if ```xSPM``` is already loaded into the workspace or could be loaded using ```load()``` function
   
@@ -54,7 +54,7 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
 
 ## Result Display
 
-The results derived using **clusterTDP-SPM** are summarised with a result summary table and printed on the console, e.g.,
+The main **clusterTDP-SPM** results are summarised with a result table that can be exported to a text file or printed on the console, e.g.,
 ```
 Statistics: cluster-level summary for search volume
           Cluster size    TDN      TDP     max(T)         [X,Y,Z]     
