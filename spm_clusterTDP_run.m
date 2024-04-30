@@ -1,14 +1,79 @@
-%-Compute xSPM
-%----------------------------------------------------------------------
-[SPM,xSPM] = spm_getSPM;
+function spm_clusterTDP_run(varargin)
+%
+% Run clusterTDP inference
+% =========================================================================
+% FORMAT: spm_clusterTDP_run
+%         spm_clusterTDP_run(xSPM)
+%         spm_clusterTDP_run(file)
+%         spm_clusterTDP_run(xSPM,file)
+% -------------------------------------------------------------------------
+% Inputs:
+%  - xSPM: structure containing SPM, distribution & filtering details
+%  - file: output text file name (e.g. ***.txt)
+% =========================================================================
+%
 
-%-Extract data from xSPM
+%-Check input arguments
 %----------------------------------------------------------------------
-xyzs = xSPM.XYZ';
-dims = xSPM.DIM';
-mat  = xSPM.M;
-zval = xSPM.Z;
-kval = xSPM.uc(3);
+if nargin > 1
+    if isstruct(varargin{1})
+        xSPM = varargin{1};
+    else
+        error('1st input should be a structure.');
+    end
+    if ischar(varargin{2})
+        file = varargin{2};
+    else
+        error('2nd input should be a character array.');
+    end
+elseif nargin == 1
+    if isstruct(varargin{1})
+        xSPM = varargin{1};
+    elseif ischar(varargin{1})
+        file = varargin{1};
+    else
+        error('Unrecognised input: should be a structure or a character array.');
+    end
+end
+
+%-Check output file name
+%----------------------------------------------------------------------
+if exist('file','var')
+    [~,~,fext] = fileparts(file);
+    if isempty(fext)
+        file = strcat(file,'.txt');
+    elseif ~strcmpi(fext,'.txt')
+        error('Unexpected output file extension: %s',fext);
+    end
+end
+
+%-Compute xSPM & extract data from xSPM
+%----------------------------------------------------------------------
+if exist('xSPM','var')
+    try
+        xyzs = xSPM.XYZ';
+        dims = xSPM.DIM';
+        mat  = xSPM.M;
+        zval = xSPM.Z;
+        kval = xSPM.uc(3);
+    catch
+        [SPM,xSPM] = spm_getSPM(xSPM);
+
+        xyzs = xSPM.XYZ';
+        dims = xSPM.DIM';
+        mat  = xSPM.M;
+        zval = xSPM.Z;
+        kval = xSPM.uc(3);
+    end
+else
+    [SPM,xSPM] = spm_getSPM;
+
+    xyzs = xSPM.XYZ';
+    dims = xSPM.DIM';
+    mat  = xSPM.M;
+    zval = xSPM.Z;
+    kval = xSPM.uc(3);
+end
 
 %-Find clusters
 %----------------------------------------------------------------------
@@ -41,23 +106,21 @@ tdp = lb./sz;                                        % 4) TDP lower bound
 
 %-Workaround in spm_max for conjunctions with negative thresholds
 %----------------------------------------------------------------------
-[clusSz,maxZ,maxXYZ,regs,XYZ] = spm_max(zval,xyzs');
+[~,maxZ,maxXYZ,regs,~] = spm_max(zval,xyzs');
 
 % sort local maxima in descending order
-[maxZ,I] = sort(maxZ,'descend');
-clusSz   = clusSz(I);
+[~,I]    = sort(maxZ,'descend');
 maxXYZ   = maxXYZ(:,I);
 regs     = regs(I);
 % return unique values of regs (unsorted)
-[~,I,~] = unique(regs,'stable');
-clusSz   = clusSz(I);                                % 1) cluster size
-maxZ     = maxZ(I);                                  % 3) max(T)
+[~,I,~]  = unique(regs,'stable');
 maxXYZ   = maxXYZ(:,I);                              % 5) XYZ coordinates
 maxXYZmm = mat(1:3,:)*[maxXYZ; ones(1,size(maxXYZ,2))];
 
 fprintf('\n');
 
-% create result table
+%-Construct & display result summary table
+%----------------------------------------------------------------------
 tbl = table(sz,lb,tdp,mz,maxXYZmm');
 tbl.Properties.Description   = 'Statistics: cluster-level summary for search volume';
 tbl.Properties.RowNames      = string(1:length(sz));
@@ -67,11 +130,10 @@ tbl.('max(T)') = round(tbl.('max(T)'),3);
 fprintf('Statistics: cluster-level summary for search volume\n')
 disp(tbl);
 
-% write result table to a text file
-writetable(tbl,'clusTbl.txt','Delimiter',' ','WriteRowNames',true); 
+%-Write the result table to a text file
+%----------------------------------------------------------------------
+if exist('file','var')
+    writetable(tbl,file,'Delimiter',' ','WriteRowNames',true);
+end
 
-
-
-
-
-
+return
