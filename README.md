@@ -34,18 +34,21 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
   ```r
   cd .../clusterTDP-SPM
   ```
+  
 * Launch Matlab, or execute Matlab from the Terminal (command prompt) without the full desktop GUI while still allowing to display graphs with the command
   ```r
   matlab -nodesktop -nosplash
   ```
-* Run the function ```spm_clusterTDP_run``` with at most two input arguments in the console, using either
-  + ```spm_clusterTDP_run``` to interactively select the desired cluster inference options on the pop-up GUI interface and run the clusterTDP inference subsequently
   
+* Conduct the clusterTDP inference by running the function ```spm_clusterTDP_run``` with at most two input arguments in the console, using either
+  
+  + ```spm_clusterTDP_run``` to interactively query ```SPM``` and select the desired cluster inference options on the pop-up GUI interface
+    
   + ```spm_clusterTDP_run(xSPM)``` if ```xSPM``` is already loaded into the workspace or could be loaded using ```load()``` function
-  
-  + ```spm_clusterTDP_run('***.txt')``` if you would like to write the result summary table to a text file named ```***.txt```
-  
-  + ```spm_clusterTDP_run(xSPM, '***.txt')``` if ```xSPM``` is available and the output text file name is specified as ```***.txt```
+    
+  + ```spm_clusterTDP_run(file)``` if you would like to write the result summary table to a text file named, e.g., ```***.txt```
+    
+  + ```spm_clusterTDP_run(xSPM, file)``` if ```xSPM``` is available and the output text file name ```file``` is specified
 
 * Alternatively, the above steps could be executed from the Terminal (command prompt) with
   ```r
