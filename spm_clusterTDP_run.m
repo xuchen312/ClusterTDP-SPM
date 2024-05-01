@@ -1,15 +1,23 @@
-function spm_clusterTDP_run(varargin)
+function varargout = spm_clusterTDP_run(varargin)
 %
 % Run clusterTDP inference
+%
 % =========================================================================
 % FORMAT: spm_clusterTDP_run
 %         spm_clusterTDP_run(xSPM)
 %         spm_clusterTDP_run(file)
 %         spm_clusterTDP_run(xSPM,file)
+%         [clusTbl] = spm_clusterTDP_run
+%         [clusTbl] = spm_clusterTDP_run(xSPM)
+%         [clusTbl] = spm_clusterTDP_run(file)
+%         [clusTbl] = spm_clusterTDP_run(xSPM,file)
 % -------------------------------------------------------------------------
-% Inputs:
+% Inputs (optional):
 %  - xSPM: structure containing SPM, distribution & filtering details
 %  - file: output text file name (e.g. ***.txt)
+%
+% Outputs (optional):
+%  - clusTbl: result summary table
 % =========================================================================
 %
 
@@ -121,19 +129,25 @@ fprintf('\n');
 
 %-Construct & display result summary table
 %----------------------------------------------------------------------
-tbl = table(sz,lb,tdp,mz,maxXYZmm');
-tbl.Properties.Description   = 'Statistics: cluster-level summary for search volume';
-tbl.Properties.RowNames      = string(1:length(sz));
-tbl.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','[X,Y,Z]'};
-tbl.('TDP')    = round(tbl.('TDP'),3);
-tbl.('max(T)') = round(tbl.('max(T)'),3);
+clusTbl = table(sz,lb,tdp,mz,maxXYZmm');
+clusTbl.Properties.Description   = 'Statistics: cluster-level summary for search volume';
+clusTbl.Properties.RowNames      = string(1:length(sz));
+clusTbl.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','[X,Y,Z]'};
+clusTbl.('TDP')    = round(clusTbl.('TDP'),3);
+clusTbl.('max(T)') = round(clusTbl.('max(T)'),3);
 fprintf('Statistics: cluster-level summary for search volume\n')
-disp(tbl);
+disp(clusTbl);
+
+%-Return result summary table
+%----------------------------------------------------------------------
+if nargout>0
+    varargout = { clusTbl };
+end
 
 %-Write the result table to a text file
 %----------------------------------------------------------------------
 if exist('file','var')
-    writetable(tbl,file,'Delimiter',' ','WriteRowNames',true);
+    writetable(clusTbl,file,'Delimiter',' ','WriteRowNames',true);
 end
 
 return
