@@ -46,7 +46,7 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
     
   + ```spm_clusterTDP_run(xSPM)``` if ```xSPM``` is already loaded into the workspace or could be loaded using ```load()``` function
     
-  + ```spm_clusterTDP_run(file)``` if you would like to write the result summary table to a text file named, e.g., ```***.txt```
+  + ```spm_clusterTDP_run(file)``` if you would like to write the result summary table to a text file named, e.g., ```clusTbl.txt```
     
   + ```spm_clusterTDP_run(xSPM, file)``` if ```xSPM``` is available and the output text file name ```file``` is specified
  
@@ -62,7 +62,7 @@ git clone https://github.com/xuchen312/clusterTDP-SPM.git
 
 ## Result Display
 
-The main **clusterTDP-SPM** results are summarised with a result table that can be printed on the console, returned to the workspace, and exported to a text file. An example of such summary table is as below.
+The main **clusterTDP-SPM** results are summarised with a result table ```clusTbl``` that can be printed on the console, returned to the workspace, and exported to a text file. An example of such summary table is as below.
 ```
 Statistics: cluster-level summary for search volume
           Cluster size    TDN      TDP     max(T)         [X,Y,Z]     
