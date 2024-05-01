@@ -1,12 +1,19 @@
-function [lower_bound] = spm_clusterTDP_lb(CL, k, varargin)
+function [lower_bound] = spm_clusterTDP_lb(CL,k,varargin)
 %
 % Compute lower bound of TDP lower bound based on RFT for a given cluster
 %
+% =========================================================================
+% FORMAT: [lower_bound] = spm_clusterTDP_lb(CL,k)
+%         [lower_bound] = spm_clusterTDP_lb(CL,k,d)
+% -------------------------------------------------------------------------
 % Inputs:
-% CL      - an nx3 matrix of [X,Y,Z] coordinates for n voxels within a
-%           cluster
-% k       - cluster extend threshold based on RFT
-% d       - dimensionality of the problem (optional)
+%  - CL: an nx3 matrix of [X,Y,Z] coordinates for n voxels within a cluster
+%  -  k: cluster extend threshold based on RFT
+%  -  d: dimensionality of the problem (optional)
+%
+% Outputs:
+%  - lower_bound: lower bound of TDP bound
+% =========================================================================
 %
 
 % check the inputs
