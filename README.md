@@ -16,17 +16,30 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
   ```
   where the installed Matlab version ```MATLAB_***``` can be found by running ```matlabroot``` in Matlab.
 
-* Please download SPM12 and add it to the Matlab search path. You could either follow **HOME -> Set Path -> Add with Subfolders**, or simply run the following line
-  ``` r
-  addpath(genpath('.../spm12'));
-  ```
-
+* Please download SPM12 and add it to the Matlab search path. You could follow either
+  
+  + **HOME -> Set Path -> Add with Subfolders**
+  
+  + Run the following line in Matlab
+    ``` r
+    addpath(genpath('.../spm12'));
+    ```
+  
 ### Installing clusterTDP-SPM
 
-Please download the latest version of clusterTDP-SPM with
-``` r
-git clone https://github.com/xuchen312/clusterTDP-SPM.git
-```
+* Please download the latest version of clusterTDP-SPM with
+  ``` r
+  git clone https://github.com/xuchen312/clusterTDP-SPM.git
+  ```
+
+* Please add the folder for the clusterTDP-SPM toolbox to the Matlab search path by following either
+  
+  + **HOME -> Set Path -> Add with Subfolders**
+  
+  + Run the below script from Matlab console
+    ```r
+    addpath(genpath('.../clusterTDP-SPM'))
+    ```
 
 ## Implementation
 
