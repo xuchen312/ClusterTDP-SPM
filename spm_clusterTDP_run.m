@@ -14,6 +14,7 @@ function varargout = spm_clusterTDP_run(varargin)
 % -------------------------------------------------------------------------
 % Inputs (optional):
 %  - xSPM: structure containing SPM, distribution & filtering details
+%          (see spm_getSPM.m for contents)
 %  - file: output text file name (e.g. ***.txt)
 %
 % Outputs (optional):
