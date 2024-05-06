@@ -68,7 +68,7 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
   [clusTbl] = spm_clusterTDP_run;
   ```
 
-* Alternatively, the above steps could be executed from the Terminal (command prompt) with
+* Alternatively, the above steps could be executed from the Terminal (command prompt) with, e.g.,
   ```r
   matlab -nodesktop -nosplash -r "cd('.../clusterTDP-SPM'); spm_clusterTDP_run; exit"
   ```
