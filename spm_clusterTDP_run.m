@@ -135,14 +135,14 @@ clusTbl.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','x (mm)'
 % table title
 fprintf('\n');
 fprintf('Statistics: cluster-level summary for search volume\n')
-fprintf('%c',repmat('=',1,80));
+fprintf('%c',repmat('=',1,60));
 fprintf('\n');
 
 % table header
 hdr = {'size','TDN(lb)','TDP(lb)','max(T)','x (mm)','y (mm)','z (mm)'}';
 fprintf('%s\t',hdr{1:end});
 fprintf('\n');
-fprintf('%c',repmat('-',1,80));
+fprintf('%c',repmat('-',1,60));
 fprintf('\n');
 
 % table data
@@ -156,7 +156,7 @@ for i = 1:size(clusTbl,1)
     fprintf('%d\t',  clusTbl{i,7});
     fprintf('\n');
 end
-fprintf('%c',repmat('-',1,80));
+fprintf('%c',repmat('-',1,60));
 fprintf('\n');
 
 % clusTbl = table(sz,lb,tdp,mz,maxXYZmm');
