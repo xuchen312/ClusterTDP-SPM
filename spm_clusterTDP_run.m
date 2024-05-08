@@ -151,9 +151,9 @@ for i = 1:size(clusTbl,1)
     fprintf('%d\t',  clusTbl{i,2});
     fprintf('%.3f\t',clusTbl{i,3});
     fprintf('%.3f\t',clusTbl{i,4});
-    fprintf('%d\t',  clusTbl{i,5});
-    fprintf('%d\t',  clusTbl{i,6});
-    fprintf('%d\t',  clusTbl{i,7});
+    fprintf('% d\t',  clusTbl{i,5});
+    fprintf('% d\t',  clusTbl{i,6});
+    fprintf('% d\t',  clusTbl{i,7});
     fprintf('\n');
 end
 fprintf('%c',repmat('-',1,60));
