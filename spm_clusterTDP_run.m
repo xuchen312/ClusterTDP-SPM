@@ -58,14 +58,14 @@ end
 %-Compute xSPM & extract data from xSPM
 %----------------------------------------------------------------------
 if exist('xSPM','var')
-    try
+    try                                 % xSPM: evaluated/thresholded structure
         xyzs = xSPM.XYZ';
         dims = xSPM.DIM';
         mat  = xSPM.M;
         zval = xSPM.Z;
         kval = xSPM.uc(3);
     catch
-        [SPM,xSPM] = spm_getSPM(xSPM);
+        [SPM,xSPM] = spm_getSPM(xSPM);  % xSPM: input structure
 
         xyzs = xSPM.XYZ';
         dims = xSPM.DIM';
@@ -74,7 +74,7 @@ if exist('xSPM','var')
         kval = xSPM.uc(3);
     end
 else
-    [SPM,xSPM] = spm_getSPM;
+    [SPM,xSPM] = spm_getSPM;            % no xSPM & query SPM interactively
 
     xyzs = xSPM.XYZ';
     dims = xSPM.DIM';
