@@ -14,7 +14,6 @@ function varargout = spm_clusterTDP_run(varargin)
 % -------------------------------------------------------------------------
 % Inputs (optional):
 %  - xSPM: structure containing SPM, distribution & filtering details
-%          (see spm_getSPM.m for contents)
 %  - file: output text file name (e.g. ***.txt)
 %
 % Outputs (optional):
@@ -126,18 +125,47 @@ regs     = regs(I);
 maxXYZ   = maxXYZ(:,I);                              % 5) XYZ coordinates
 maxXYZmm = mat(1:3,:)*[maxXYZ; ones(1,size(maxXYZ,2))];
 
-fprintf('\n');
-
 %-Construct & display result summary table
 %----------------------------------------------------------------------
-clusTbl = table(sz,lb,tdp,mz,maxXYZmm');
-clusTbl.Properties.Description   = 'Statistics: cluster-level summary for search volume';
-clusTbl.Properties.RowNames      = string(1:length(sz));
-clusTbl.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','[X,Y,Z]'};
-clusTbl.('TDP')    = round(clusTbl.('TDP'),3);
-clusTbl.('max(T)') = round(clusTbl.('max(T)'),3);
+
+% result table
+clusTbl = table(sz,lb,tdp,mz,maxXYZmm(1,:)',maxXYZmm(2,:)',maxXYZmm(3,:)');
+clusTbl.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','x (mm)','y (mm)','z (mm)'};
+
+% table title
+fprintf('\n');
 fprintf('Statistics: cluster-level summary for search volume\n')
-disp(clusTbl);
+fprintf('%c',repmat('=',1,80));
+fprintf('\n');
+
+% table header
+hdr = {'size','TDN(lb)','TDP(lb)','max(T)','x (mm)','y (mm)','z (mm)'}';
+fprintf('%s\t',hdr{1:end});
+fprintf('\n');
+fprintf('%c',repmat('-',1,80));
+fprintf('\n');
+
+% table data
+for i = 1:size(clusTbl,1)
+    fprintf('%d\t',  clusTbl{i,1});
+    fprintf('%d\t',  clusTbl{i,2});
+    fprintf('%.3f\t',clusTbl{i,3});
+    fprintf('%.3f\t',clusTbl{i,4});
+    fprintf('%d\t',  clusTbl{i,5});
+    fprintf('%d\t',  clusTbl{i,6});
+    fprintf('%d\t',  clusTbl{i,7});
+    fprintf('\n');
+end
+fprintf('%c',repmat('-',1,80));
+fprintf('\n');
+
+% clusTbl = table(sz,lb,tdp,mz,maxXYZmm');
+% clusTbl.Properties.Description   = 'Statistics: cluster-level summary for search volume';
+% clusTbl.Properties.RowNames      = string(1:length(sz));
+% clusTbl.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','[X,Y,Z]'};
+% clusTbl.('TDP')    = round(clusTbl.('TDP'),3);
+% clusTbl.('max(T)') = round(clusTbl.('max(T)'),3);
+% disp(clusTbl);
 
 %-Return result summary table
 %----------------------------------------------------------------------
