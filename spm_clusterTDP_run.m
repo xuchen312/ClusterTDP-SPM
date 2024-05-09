@@ -139,7 +139,7 @@ fprintf('%c',repmat('=',1,60));
 fprintf('\n');
 
 % table header
-hdr = {'   Size','TDN(lb)','TDP(lb)','max(T)','   x','   y','   z (mm)'}';
+hdr = {'   Size','TDN(lb)','TDP(lb)','max(T)','  x','  y','  z (mm)'}';
 fprintf('%s\t',hdr{1:end});
 fprintf('\n');
 fprintf('%c',repmat('-',1,60));
