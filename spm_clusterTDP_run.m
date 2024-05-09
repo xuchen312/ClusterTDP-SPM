@@ -139,7 +139,7 @@ fprintf('%c',repmat('=',1,60));
 fprintf('\n');
 
 % table header
-hdr = {'size','TDN(lb)','TDP(lb)','max(T)','x (mm)','y (mm)','z (mm)'}';
+hdr = {'   Size','TDN(lb)','TDP(lb)','max(T)','   x','   y','   z (mm)'}';
 fprintf('%s\t',hdr{1:end});
 fprintf('\n');
 fprintf('%c',repmat('-',1,60));
@@ -147,13 +147,13 @@ fprintf('\n');
 
 % table data
 for i = 1:size(clusTbl,1)
-    fprintf('%d\t',  clusTbl{i,1});
-    fprintf('%d\t',  clusTbl{i,2});
-    fprintf('%.3f\t',clusTbl{i,3});
-    fprintf('%.3f\t',clusTbl{i,4});
-    fprintf('% d\t',  clusTbl{i,5});
-    fprintf('% d\t',  clusTbl{i,6});
-    fprintf('% d\t',  clusTbl{i,7});
+    fprintf('%7.0f\t',clusTbl{i,1});
+    fprintf('%7.0f\t',clusTbl{i,2});
+    fprintf('%6.3f\t',clusTbl{i,3});
+    fprintf('%6.3f\t',clusTbl{i,4});
+    fprintf('%4.0f\t',clusTbl{i,5});
+    fprintf('%4.0f\t',clusTbl{i,6});
+    fprintf('%4.0f\t',clusTbl{i,7});
     fprintf('\n');
 end
 fprintf('%c',repmat('-',1,60));
