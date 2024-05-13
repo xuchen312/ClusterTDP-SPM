@@ -103,8 +103,7 @@ Statistics: cluster-level summary for search volume
 ```
 
 where a full list of summary variables is described below.
-* Index of significant clusters using RFT-based cluster extent inference
-* Cluster size for each significant cluster
+* Cluster size for each significant cluster using RFT-based cluster extent inference
 * Lower bound of TDN (number of true discoveries) bound for each cluster
 * Lower bound of TDP bound for each cluster
 * maximum statistic of peak voxel within each cluster
