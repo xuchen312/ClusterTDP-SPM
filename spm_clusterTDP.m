@@ -7,8 +7,10 @@ function varargout = spm_clusterTDP(varargin)
 %         [ClusTab] = spm_clusterTDP([xSPM,file])
 % -------------------------------------------------------------------------
 % Inputs (optional):
-%  - xSPM: structure containing SPM, distribution & filtering details
-%  - file: output text file name (e.g. ***.txt)
+%  -   xSPM: an input structure containing SPM, distribution & filtering
+%            details (see spm_getSPM.m for details) 
+%  -   file: a character array specifying the output name for a text file
+%            (e.g. ClusTab.txt)
 %
 % Outputs (optional):
 %  - ClusTab: result summary table
@@ -21,12 +23,12 @@ if nargin > 1
     if isstruct(varargin{1})
         xSPM = varargin{1};
     else
-        error('1st input should be a structure.');
+        error('Wrong input format: ''xSPM'' should be a structure.');
     end
     if ischar(varargin{2})
         file = varargin{2};
     else
-        error('2nd input should be a character array.');
+        error('Wrong input format: ''file'' should be a character array.');
     end
 elseif nargin == 1
     if isstruct(varargin{1})
@@ -34,7 +36,7 @@ elseif nargin == 1
     elseif ischar(varargin{1})
         file = varargin{1};
     else
-        error('Unrecognised input format: should be a structure or a character array.');
+        error('Unrecognised input format.');
     end
 end
 
