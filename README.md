@@ -18,7 +18,7 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
 
 * Please download SPM12 and add it to the Matlab search path. You could follow either
   
-  + **HOME -> Set Path -> Add with Subfolders**
+  + **HOME -> Set Path -> Add Folder...**
   
   + Run the following line in Matlab
     ``` r
