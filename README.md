@@ -59,13 +59,13 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
     
   + ```spm_clusterTDP(xSPM)``` if an input structure ```xSPM``` is already loaded into the workspace or could be loaded using ```load()``` function
     
-  + ```spm_clusterTDP(file)``` if you would like to write the result summary table to a text file named, e.g., ```ClusTab.txt```
+  + ```spm_clusterTDP(file)``` if you would like to write the result summary table to a CSV file named, e.g., ```ClusTab.csv```
     
   + ```spm_clusterTDP(xSPM, file)``` if ```xSPM``` is available and the output text file name ```file``` is specified
  
-  Meanwhile, the result table of clusterTDP inference can also be outputted using
+  In addition, some outputs of clusterTDP inference can be returned for interactive exploration of the results in the control panel
   ```r
-  [ClusTab] = spm_clusterTDP;
+  [hReg,xSPM,SPM,TabDat] = spm_clusterTDP;
   ```
 
 * Alternatively, the above steps could be executed from the Terminal (command prompt) with, e.g.,
@@ -75,39 +75,34 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
 
 ## Result Display
 
-The main **clusterTDP-SPM** results are summarised with a result table ```ClusTab``` that can be printed on the console, returned to the workspace, and exported to a text file. An example of such summary table is as below.
+The main **clusterTDP-SPM** results are summarised with a result table ```TabDat``` that can be printed on the console, visualised in the Graphics window, returned to the workspace, and exported to a CSV file. An example of such summary table is as below.
 ```
-Statistics: cluster-level summary for search volume
-============================================================
-   Size	TDN(lb)	TDP(lb)	max(T)	  x	  y	  z (mm)	
-------------------------------------------------------------
-   5894	   1083	 0.184	11.899	  58	 -14	   4	
-   4039	    795	 0.197	 9.983	 -58	 -14	   0	
-    276	      1	 0.004	 7.250	  52	   2	  52	
-    125	      0	 0.000	 6.596	  18	  -4	 -14	
-     27	      0	 0.000	 5.645	  10	  -2	  -2	
-     36	      0	 0.000	 5.511	 -34	  12	 -24	
-     72	      0	 0.000	 4.989	 -42	  28	  -2	
-    131	      1	 0.008	 4.509	 -60	  16	  32	
-     17	      0	 0.000	 4.356	  40	   4	 -44	
-     17	      0	 0.000	 4.301	  -8	  -8	 -12	
-     16	      0	 0.000	 4.160	 -48	  -8	  46	
-     10	      0	 0.000	 4.116	  28	 -20	  -6	
-     21	      0	 0.000	 4.107	   8	  48	  36	
-     29	      0	 0.000	 4.032	   8	  12	  60	
-     10	      0	 0.000	 3.993	 -36	  12	 -40	
-     11	      0	 0.000	 3.939	  10	  20	  58	
-     11	      0	 0.000	 3.928	   6	 -32	   0	
-     19	      0	 0.000	 3.800	  10	 -12	   8	
-------------------------------------------------------------
-```
+Statistics: p-values adjusted for search volume
+================================================================================
+set	set	cluster	cluster	cluster	cluster	peak	peak	peak	peak	peak	
+p	c	p(FWE)	p(FDR)	k	TDP(lb)	p(FWE)	p(FDR)	T	Z	p(unc)	x,y,z {mm}
+--------------------------------------------------------------------------------
+0.000	2	0.000	0.000	248	0.742	0.000	0.061	 11.90	 6.30	0.000	 58 -14  4 	
+						0.001	0.187	  9.72	 5.76	0.000	 56 -22 -4 	
+						0.005	0.333	  8.96	 5.54	0.000	 48 -30  0 	
+		0.000	0.000	185	0.730	0.001	0.165	  9.98	 5.83	0.000	-58 -14  0 	
+						0.002	0.234	  9.42	 5.68	0.000	-54 -30  6 	
+						0.004	0.314	  9.09	 5.58	0.000	-56 -22  4 	
 
-where a full list of summary variables is described below.
-* Cluster size for each significant cluster using RFT-based cluster extent inference
-* Lower bound of TDN (number of true discoveries) bound for each cluster
-* Lower bound of TDP bound for each cluster
-* maximum statistic of peak voxel within each cluster
-* [X,Y,Z] location of peak voxel within each cluster {mm}
+table shows 3 local maxima more than 8.0mm apart
+--------------------------------------------------------------------------------
+Height threshold: T = 7.73, p = 0.000 (0.050)
+Extent threshold: k = 10 voxels, p = 0.002 (0.000)
+Expected voxels per cluster, <k> = 0.897
+Expected number of clusters, <c> = 0.00
+FWEp: 7.728, FDRp: Inf, FWEc: 1, FDRc: 185
+Degrees of freedom = [1.0, 19.0]
+FWHM = 10.2 9.9 9.2 mm mm mm; 5.1 4.9 4.6 {voxels}
+Volume: 2866384 = 358298 voxels = 2905.8 resels
+Voxel size: 2.0 2.0 2.0 mm mm mm; (resel = 116.13 voxels)
+================================================================================
+```
+where the summary variable ```TDP(lb)``` shows the lower bound of TDP bound, derived using clusterTDP, for each significant cluster using RFT-based cluster extent inference.
 
 ## References
 
