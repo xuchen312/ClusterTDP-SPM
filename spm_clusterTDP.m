@@ -1,23 +1,17 @@
-function varargout = spm_clusterTDP_run(varargin)
+function varargout = spm_clusterTDP(varargin)
 %
 % Run clusterTDP inference
 %
 % =========================================================================
-% FORMAT: spm_clusterTDP_run
-%         spm_clusterTDP_run(xSPM)
-%         spm_clusterTDP_run(file)
-%         spm_clusterTDP_run(xSPM,file)
-%         [clusTbl] = spm_clusterTDP_run
-%         [clusTbl] = spm_clusterTDP_run(xSPM)
-%         [clusTbl] = spm_clusterTDP_run(file)
-%         [clusTbl] = spm_clusterTDP_run(xSPM,file)
+% FORMAT:             spm_clusterTDP([xSPM,file])
+%         [ClusTab] = spm_clusterTDP([xSPM,file])
 % -------------------------------------------------------------------------
 % Inputs (optional):
 %  - xSPM: structure containing SPM, distribution & filtering details
 %  - file: output text file name (e.g. ***.txt)
 %
 % Outputs (optional):
-%  - clusTbl: result summary table
+%  - ClusTab: result summary table
 % =========================================================================
 %
 
@@ -40,7 +34,7 @@ elseif nargin == 1
     elseif ischar(varargin{1})
         file = varargin{1};
     else
-        error('Unrecognised input: should be a structure or a character array.');
+        error('Unrecognised input format: should be a structure or a character array.');
     end
 end
 
@@ -108,8 +102,8 @@ end
 %-Sort local maxima in descending order
 %----------------------------------------------------------------------
 [mz,I] = sort(mz,'descend');
-sz = sz(I);
-lb = lb(I);
+sz  = sz(I);
+lb  = lb(I);
 tdp = lb./sz;                                        % 4) TDP lower bound
 
 %-Workaround in spm_max for conjunctions with negative thresholds
@@ -129,8 +123,8 @@ maxXYZmm = mat(1:3,:)*[maxXYZ; ones(1,size(maxXYZ,2))];
 %----------------------------------------------------------------------
 
 % result table
-clusTbl = table(sz,lb,tdp,mz,maxXYZmm(1,:)',maxXYZmm(2,:)',maxXYZmm(3,:)');
-clusTbl.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','x (mm)','y (mm)','z (mm)'};
+ClusTab = table(sz,lb,tdp,mz,maxXYZmm(1,:)',maxXYZmm(2,:)',maxXYZmm(3,:)');
+%ClusTab.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','x (mm)','y (mm)','z (mm)'};
 
 % table title
 fprintf('\n');
@@ -146,37 +140,37 @@ fprintf('%c',repmat('-',1,60));
 fprintf('\n');
 
 % table data
-for i = 1:size(clusTbl,1)
-    fprintf('%7.0f\t',clusTbl{i,1});
-    fprintf('%7.0f\t',clusTbl{i,2});
-    fprintf('%6.3f\t',clusTbl{i,3});
-    fprintf('%6.3f\t',clusTbl{i,4});
-    fprintf('%4.0f\t',clusTbl{i,5});
-    fprintf('%4.0f\t',clusTbl{i,6});
-    fprintf('%4.0f\t',clusTbl{i,7});
+for i = 1:size(ClusTab,1)
+    fprintf('%7.0f\t',ClusTab{i,1});
+    fprintf('%7.0f\t',ClusTab{i,2});
+    fprintf('%6.3f\t',ClusTab{i,3});
+    fprintf('%6.3f\t',ClusTab{i,4});
+    fprintf('%4.0f\t',ClusTab{i,5});
+    fprintf('%4.0f\t',ClusTab{i,6});
+    fprintf('%4.0f\t',ClusTab{i,7});
     fprintf('\n');
 end
 fprintf('%c',repmat('-',1,60));
 fprintf('\n');
 
-% clusTbl = table(sz,lb,tdp,mz,maxXYZmm');
-% clusTbl.Properties.Description   = 'Statistics: cluster-level summary for search volume';
-% clusTbl.Properties.RowNames      = string(1:length(sz));
-% clusTbl.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','[X,Y,Z]'};
-% clusTbl.('TDP')    = round(clusTbl.('TDP'),3);
-% clusTbl.('max(T)') = round(clusTbl.('max(T)'),3);
-% disp(clusTbl);
+% ClusTab = table(sz,lb,tdp,mz,maxXYZmm');
+% ClusTab.Properties.Description   = 'Statistics: cluster-level summary for search volume';
+% ClusTab.Properties.RowNames      = string(1:length(sz));
+% ClusTab.Properties.VariableNames = {'Cluster size','TDN','TDP','max(T)','[X,Y,Z]'};
+% ClusTab.('TDP')    = round(ClusTab.('TDP'),3);
+% ClusTab.('max(T)') = round(ClusTab.('max(T)'),3);
+% disp(ClusTab);
 
 %-Return result summary table
 %----------------------------------------------------------------------
 if nargout>0
-    varargout = { clusTbl };
+    varargout = {ClusTab};
 end
 
 %-Write the result table to a text file
 %----------------------------------------------------------------------
 if exist('file','var')
-    writetable(clusTbl,file,'Delimiter',' ','WriteRowNames',true);
+    writetable(ClusTab,file,'Delimiter',' ','WriteRowNames',true);
 end
 
 return
