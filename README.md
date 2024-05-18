@@ -34,7 +34,7 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
 
 * Please add the folder for the clusterTDP-SPM toolbox to the Matlab search path by following either
   
-  + **HOME -> Set Path -> Add with Subfolders**
+  + **HOME -> Set Path -> Add Folder...**
   
   + Run the below script from Matlab console
     ```r
@@ -53,29 +53,29 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
   matlab -nodesktop -nosplash
   ```
   
-* Conduct the clusterTDP inference by running the function ```spm_clusterTDP_run``` with at most two input arguments in the console, using either
+* Conduct the clusterTDP inference by running the function ```spm_clusterTDP``` with at most two input arguments in the console, using either
   
-  + ```spm_clusterTDP_run``` to interactively query ```SPM``` and select the desired cluster inference options on the pop-up GUI interface
+  + ```spm_clusterTDP``` to interactively query ```SPM``` and select the desired cluster thresholding options on the pop-up GUI interface
     
-  + ```spm_clusterTDP_run(xSPM)``` if ```xSPM``` is already loaded into the workspace or could be loaded using ```load()``` function
+  + ```spm_clusterTDP(xSPM)``` if an input structure ```xSPM``` is already loaded into the workspace or could be loaded using ```load()``` function
     
-  + ```spm_clusterTDP_run(file)``` if you would like to write the result summary table to a text file named, e.g., ```clusTbl.txt```
+  + ```spm_clusterTDP(file)``` if you would like to write the result summary table to a text file named, e.g., ```ClusTab.txt```
     
-  + ```spm_clusterTDP_run(xSPM, file)``` if ```xSPM``` is available and the output text file name ```file``` is specified
+  + ```spm_clusterTDP(xSPM, file)``` if ```xSPM``` is available and the output text file name ```file``` is specified
  
-  Meanwhile, the results of clusterTDP inference can also be outputted using, e.g.,
+  Meanwhile, the result table of clusterTDP inference can also be outputted using
   ```r
-  [clusTbl] = spm_clusterTDP_run;
+  [ClusTab] = spm_clusterTDP;
   ```
 
 * Alternatively, the above steps could be executed from the Terminal (command prompt) with, e.g.,
   ```r
-  matlab -nodesktop -nosplash -r "cd('.../clusterTDP-SPM'); spm_clusterTDP_run; exit"
+  matlab -nodesktop -nosplash -r "cd('.../clusterTDP-SPM'); spm_clusterTDP; exit"
   ```
 
 ## Result Display
 
-The main **clusterTDP-SPM** results are summarised with a result table ```clusTbl``` that can be printed on the console, returned to the workspace, and exported to a text file. An example of such summary table is as below.
+The main **clusterTDP-SPM** results are summarised with a result table ```ClusTab``` that can be printed on the console, returned to the workspace, and exported to a text file. An example of such summary table is as below.
 ```
 Statistics: cluster-level summary for search volume
 ============================================================
