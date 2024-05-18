@@ -17,7 +17,7 @@ function [lower_bound] = spm_clusterTDP_lb(CL,k,varargin)
 
 % check the inputs
 if nargin < 2
-    error('Function requires at least 2 inputs!');
+    error('Not enough input arguments.');
 elseif nargin > 2
     d = varargin{1};
 else
