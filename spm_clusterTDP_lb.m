@@ -3,8 +3,7 @@ function [lower_bound] = spm_clusterTDP_lb(CL,k,varargin)
 % Compute lower bound of TDP lower bound based on RFT for a given cluster
 %
 % =========================================================================
-% FORMAT: [lower_bound] = spm_clusterTDP_lb(CL,k)
-%         [lower_bound] = spm_clusterTDP_lb(CL,k,d)
+% FORMAT: [lower_bound] = spm_clusterTDP_lb(CL,k,[d])
 % -------------------------------------------------------------------------
 % Inputs:
 %  - CL: an nx3 matrix of [X,Y,Z] coordinates for n voxels within a cluster
@@ -116,4 +115,8 @@ for j=1:i
     CL = CLPLUS(CL, neighbors);
 end
 CLprune = CL;
+return
+
+function r = range(CL)
+r = max(CL(:)) - min(CL(:));
 return
