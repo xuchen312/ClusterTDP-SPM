@@ -1,16 +1,16 @@
 # clusterTDP-SPM
 
-**clusterTDP-SPM** is an SPM extension for estimating true discovery proportion (TDP) using random field theory (RFT)-based cluster extent inference.
+**clusterTDP-SPM** is an SPM extension for estimating true discovery proportion (TDP) with the **clusterTDP** approach, which is based on cluster extent thresholding using Gaussian random field theory implemented in SPM.
 
 ## Introduction
 
-Cluster extent thresholding is one of the most popular approaches for detecting activations in fMRI. Although being powerful in general, this approach suffers from the so-called spatial specificity paradox. That is, each significant cluster contains at least one active voxel, but the localtion or amount of signal is unknown. The new method **clusterTDP** (Goeman et al., 2023) complements and improves upon the current RFT-based cluster extent inference by quantifying the signal with a TDP estimate for every region.
+Cluster extent inference is one of the most popular approaches for detecting activations in fMRI. Although being powerful in general, this approach suffers from the so-called spatial specificity paradox. That is, each significant cluster contains at least one active voxel, but the localtion or amount of signal is unknown. The new method **clusterTDP** (Goeman et al., 2023) complements and improves upon the current RFT-based cluster extent inference by quantifying the signal with a TDP estimate for every region.
 
 ## Installation
 
 ### Prerequisites
 
-* Please first download and install Matlab. For macOS users, you could edit the ```.bash_profile``` file and add Matlab to the ```PATH``` by appending
+* Please download and install Matlab. For macOS users, you could edit the ```.bash_profile``` file and add Matlab to the ```PATH``` by appending
   ``` r
   export PATH=/Applications/MATLAB_***.app/bin:$PATH
   ```
@@ -57,25 +57,25 @@ Cluster extent thresholding is one of the most popular approaches for detecting 
   
   + ```spm_clusterTDP``` to interactively query ```SPM``` and select the desired cluster thresholding options on the pop-up GUI interface
     
-  + ```spm_clusterTDP(xSPM)``` if an input structure ```xSPM``` is already loaded into the workspace or could be loaded using ```load()``` function
+  + ```spm_clusterTDP(xSPM)``` if an input ```xSPM``` structure is already loaded into the workspace or could be loaded using ```load()``` function
     
   + ```spm_clusterTDP(file)``` if you would like to write the result summary table to a CSV file named, e.g., ```ClusTab.csv```
     
-  + ```spm_clusterTDP(xSPM, file)``` if ```xSPM``` is available and the output text file name ```file``` is specified
+  + ```spm_clusterTDP(xSPM, file)``` if ```xSPM``` is available and the output CSV file name ```file``` is specified
  
-  In addition, some outputs of clusterTDP inference can be returned for interactive exploration of the results in the control panel
+  In addition, some outputs of the clusterTDP inference can be returned for interactive exploration of the results in the control panel with, e.g.,
   ```r
   [hReg,xSPM,SPM,TabDat] = spm_clusterTDP;
   ```
 
-* Alternatively, the above steps could be executed from the Terminal (command prompt) with, e.g.,
+* Alternatively, the above steps could be executed from the Terminal (command prompt) and quit Matlab in the end with, e.g.,
   ```r
   matlab -nodesktop -nosplash -r "cd('.../clusterTDP-SPM'); spm_clusterTDP; exit"
   ```
 
 ## Result Display
 
-The main **clusterTDP-SPM** results are summarised with a result table ```TabDat``` that can be printed on the console, visualised in the Graphics window, returned to the workspace, and exported to a CSV file. An example of such summary table is as below.
+The main **clusterTDP-SPM** results are summarised with a result table ```TabDat``` that can be printed on the Matlab console, visualised from the graphics window in SPM, returned to the workspace, and exported to a CSV file. An example of such summary table is as below.
 ```
 Statistics: p-values adjusted for search volume
 ================================================================================
@@ -102,7 +102,7 @@ Volume: 2866384 = 358298 voxels = 2905.8 resels
 Voxel size: 2.0 2.0 2.0 mm mm mm; (resel = 116.13 voxels)
 ================================================================================
 ```
-where the summary variable ```TDP(lb)``` shows the lower bound of TDP bound, derived using clusterTDP, for each significant cluster using RFT-based cluster extent inference.
+where the summary variable ```TDP(lb)``` shows the lower bound of TDP bound, derived using clusterTDP, for each significant cluster based on cluster extent inference.
 
 ## References
 
