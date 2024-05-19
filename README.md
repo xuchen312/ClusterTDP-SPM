@@ -102,7 +102,7 @@ Volume: 2866384 = 358298 voxels = 2905.8 resels
 Voxel size: 2.0 2.0 2.0 mm mm mm; (resel = 116.13 voxels)
 ================================================================================
 ```
-where the summary variable ```TDP(lb)``` shows the lower bound of TDP bound, derived using clusterTDP, for each significant cluster based on cluster extent inference.
+Here, this summary table is highly related to the SPM12 statistics results table, and the summary variable ```TDP(lb)``` shows the lower bound of TDP bound, derived using clusterTDP, for each significant cluster based on cluster extent inference.
 
 ## References
 
