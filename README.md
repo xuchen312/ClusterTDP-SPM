@@ -62,8 +62,8 @@ Cluster extent inference is one of the most popular approaches for detecting act
   + ```spm_clusterTDP(file)``` if you would like to write the result summary table to a CSV file named, e.g., ```ClusTab.csv```
     
   + ```spm_clusterTDP(xSPM, file)``` if ```xSPM``` is available and the output CSV file name ```file``` is specified
- 
-  In addition, some outputs of the clusterTDP inference can be returned for interactive exploration of the results in the control panel with, e.g.,
+
+  Please note the input argument ```xSPM``` should have the input structure detailed in ```spm_getSPM.m```. In addition, some outputs of the clusterTDP inference can be returned for interactive exploration of the results in the control panel with, e.g.,
   ```r
   [hReg,xSPM,SPM,TabDat] = spm_clusterTDP;
   ```
