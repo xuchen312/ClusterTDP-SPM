@@ -75,7 +75,7 @@ Cluster extent inference is one of the most popular approaches for detecting act
 
 ## Result Display
 
-The main **clusterTDP-SPM** results are summarised with a result table ```TabDat``` that can be printed on the Matlab console, visualised from the graphics window in SPM, returned to the workspace, and exported to a CSV file. An example of such summary table is as below.
+The main **clusterTDP-SPM** results are summarised with a result table ```TabDat``` that can be printed on the Matlab console, visualised from the graphics window in SPM, returned to the workspace, and exported to a CSV file. An example of such summary tables is as below.
 ```
 Statistics: p-values adjusted for search volume
 ================================================================================
