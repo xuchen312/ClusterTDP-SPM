@@ -1,10 +1,10 @@
-# clusterTDP-SPM
+# ClusterTDP-SPM
 
-**clusterTDP-SPM** is an SPM extension for estimating true discovery proportion (TDP) with the **clusterTDP** approach, which is based on cluster extent thresholding using Gaussian random field theory implemented in SPM.
+**ClusterTDP-SPM** is an SPM extension for estimating true discovery proportion (TDP) with the **clusterTDP** approach, which is based on cluster extent thresholding using Gaussian random field theory implemented in SPM.
 
 ## Introduction
 
-Cluster extent inference is one of the most popular approaches for detecting activations in fMRI. Although being powerful in general, this approach suffers from the so-called spatial specificity paradox. That is, each significant cluster contains at least one active voxel, but the location or amount of signal is unknown. The new method **clusterTDP** (Goeman et al., 2023) complements and improves upon the current RFT-based cluster extent inference by quantifying the signal with a TDP estimate for every region.
+Cluster extent inference is one of the most popular approaches for detecting activations in fMRI. Although being powerful in general, this approach suffers from the so-called spatial specificity paradox. That is, each significant cluster contains at least one active voxel, but the location or amount of signal is unknown. The new method **ClusterTDP** (Goeman et al., 2023) complements and improves upon the current RFT-based cluster extent inference by quantifying the signal with a TDP estimate for every region.
 
 ## Installation
 
@@ -27,9 +27,9 @@ Cluster extent inference is one of the most popular approaches for detecting act
   
 ### Installing clusterTDP-SPM
 
-* Please download the latest version of clusterTDP-SPM with
+* Please download the latest version of ClusterTDP-SPM with
   ``` r
-  git clone https://github.com/xuchen312/clusterTDP-SPM.git
+  git clone https://github.com/xuchen312/ClusterTDP-SPM.git
   ```
 
 * Please add the folder for the clusterTDP-SPM toolbox to the Matlab search path by following either
@@ -38,14 +38,14 @@ Cluster extent inference is one of the most popular approaches for detecting act
   
   + Run the below script from Matlab console
     ```r
-    addpath(genpath('.../clusterTDP-SPM'))
+    addpath(genpath('.../ClusterTDP-SPM'))
     ```
 
 ## Implementation
 
-* Navigate to the folder for the clusterTDP-SPM toolbox with
+* Navigate to the folder for the ClusterTDP-SPM toolbox with
   ```r
-  cd .../clusterTDP-SPM
+  cd .../ClusterTDP-SPM
   ```
   
 * Launch Matlab, or execute Matlab from the Terminal (command prompt) without the full desktop GUI while still allowing to display graphs with the command
@@ -53,7 +53,7 @@ Cluster extent inference is one of the most popular approaches for detecting act
   matlab -nodesktop -nosplash
   ```
   
-* Conduct the clusterTDP inference by running the function ```spm_clusterTDP``` with at most two input arguments in the console, using either
+* Conduct the ClusterTDP inference by running the function ```spm_clusterTDP``` with at most two input arguments in the console, using either
   
   + ```spm_clusterTDP``` to interactively query ```SPM``` and select the desired cluster thresholding options on the pop-up GUI interface
     
@@ -75,7 +75,7 @@ Cluster extent inference is one of the most popular approaches for detecting act
 
 ## Result Display
 
-The main **clusterTDP-SPM** results are summarised with a result table ```TabDat``` that can be printed on the Matlab console, visualised from the graphics window in SPM, returned to the workspace, and exported to a CSV file. An example of such summary tables is as below.
+The main **ClusterTDP-SPM** results are summarised with a result table ```TabDat``` that can be printed on the Matlab console, visualised from the graphics window in SPM, returned to the workspace, and exported to a CSV file. An example of such summary tables is as below.
 ```
 Statistics: p-values adjusted for search volume
 ================================================================================
@@ -102,7 +102,7 @@ Volume: 2866384 = 358298 voxels = 2905.8 resels
 Voxel size: 2.0 2.0 2.0 mm mm mm; (resel = 116.13 voxels)
 ================================================================================
 ```
-Here, this summary table is highly related to the SPM12 statistics results table, and the summary variable ```TDP(lb)``` shows the lower bound of TDP bound, derived using clusterTDP, for each significant cluster based on cluster extent inference.
+Here, this summary table is highly related to the SPM12 statistics results table, and the summary variable ```TDP(lb)``` shows the lower bound of TDP bound, derived using ClusterTDP, for each significant cluster based on cluster extent inference.
 
 ## References
 
