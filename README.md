@@ -25,14 +25,14 @@ Cluster extent inference is one of the most popular approaches for detecting act
     addpath(genpath('.../spm12'));
     ```
   
-### Installing clusterTDP-SPM
+### Installing ClusterTDP-SPM
 
 * Please download the latest version of ClusterTDP-SPM with
   ``` r
   git clone https://github.com/xuchen312/ClusterTDP-SPM.git
   ```
 
-* Please add the folder for the clusterTDP-SPM toolbox to the Matlab search path by following either
+* Please add the folder for the ClusterTDP-SPM toolbox to the Matlab search path by following either
   
   + **HOME -> Set Path -> Add Folder...**
   
@@ -70,7 +70,7 @@ Cluster extent inference is one of the most popular approaches for detecting act
 
 * Alternatively, the above steps could be executed from the Terminal (command prompt) and quit Matlab in the end with, e.g.,
   ```r
-  matlab -nodesktop -nosplash -r "cd('.../clusterTDP-SPM'); spm_clusterTDP; exit"
+  matlab -nodesktop -nosplash -r "cd('.../ClusterTDP-SPM'); spm_clusterTDP; exit"
   ```
 
 ## Result Display
