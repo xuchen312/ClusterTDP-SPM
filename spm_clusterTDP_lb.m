@@ -7,7 +7,7 @@ function [lower_bound] = spm_clusterTDP_lb(CL,k,varargin)
 % -------------------------------------------------------------------------
 % Inputs:
 %  - CL: an nx3 matrix of [X,Y,Z] coordinates for n voxels within a cluster
-%  -  k: cluster extend threshold based on RFT
+%  -  k: cluster extend threshold based on RFT - 1
 %  -  d: dimensionality of the problem (optional)
 %
 % Outputs:
