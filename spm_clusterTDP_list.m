@@ -355,6 +355,12 @@ case 'table'                                                        %-Table
         TabDat.ftr = {};
     end 
 
+
+    %-Compute minimum significant cluster size
+    %----------------------------------------------------------------------
+    minClusSz = spm_clusterTDP_minsize(xSPM);
+
+
     %-Characterize excursion set in terms of maxima
     % (sorted on Z values and grouped by regions)
     %----------------------------------------------------------------------
@@ -410,10 +416,6 @@ case 'table'                                                        %-Table
             K = N*V2R;
         end
     end
-
-    %-Print minimum significant cluster size
-    %----------------------------------------------------------------------
-    fprintf('\n The minimum significant cluster size is %d \n', round(uc(3)));
     
     %-Convert maxima locations from voxels to mm
     %----------------------------------------------------------------------
@@ -485,8 +487,8 @@ case 'table'                                                        %-Table
             % A(i)     - region number (c=max(A))
             % L{i}     - 3xN(i) array of voxel [X Y Z] coordinates for N(i)
             %            voxels
-            tdp = spm_clusterTDP_lb(L{A(i)}',round(uc(3))-1)/N(i);
-            %tdp = spm_clusterTDP_lb(L{i}',ceil(uc(3))-1)/N(i);
+            tdp = spm_clusterTDP_lb(L{A(i)}',minClusSz-1)/N(i);
+            %tdp = spm_clusterTDP_lb(L{i}',round(uc(3))-1)/N(i);
         else
             Pz      = [];
             Pu      = [];
