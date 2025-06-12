@@ -92,7 +92,7 @@ TabDat = spm_clusterTDP_list('List',xSPM,hReg);
 
 %-Display table "TabDat"
 %----------------------------------------------------------------------
-spm_clusterTDP_list('TxtList',TabDat);
+%spm_clusterTDP_list('TxtList',TabDat);
 
 %-Check output file name & write result table to a csv file
 %----------------------------------------------------------------------
