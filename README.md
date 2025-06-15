@@ -1,6 +1,6 @@
 # ClusterTDP-SPM
 
-**ClusterTDP-SPM** is an SPM extension for estimating true discovery proportion (TDP) with the **ClusterTDP** approach, which is based on cluster extent thresholding using Gaussian random field theory implemented in SPM.
+**ClusterTDP-SPM** is an SPM extension for estimating true discovery proportion (TDP) using the **ClusterTDP** approach, which is an enhanced cluster inference approach that builds upon cluster extent thresholding with Gaussian random field theory, implemented in SPM.
 
 ## Introduction
 
